@@ -44,7 +44,10 @@ app.get("/participant/:id",function(request,response) {
 
 app.post("/participant",function(request,response) {
   //Create new Object
-  response.end("I am creating new participant");
+  console.log("Got following payload"+JSON.stringify(request.body));
+  var brandNew = new ModelObject(request.body).save(function(err,object) {
+    response.end(JSON.stringify(object));
+  });
 });
 
 app.post("/participant/:id",function(request,response) {
