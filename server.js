@@ -10,6 +10,15 @@ mongoose.connect("mongodb://localhost/TaskManager",function() {
   console.log("Connected")
 });
 
+var Schema = mongoose.Schema;
+      
+  /* Schema Definition */ 
+    var ModelSchema = new Schema({
+    name        :  { type: String, required: true }
+  , description : String
+  });
+var ModelObject = mongoose.model('ModelObject', ModelSchema);
+
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
