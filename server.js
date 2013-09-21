@@ -5,6 +5,12 @@ app.use(express.static(__dirname + '/public', { }));
 app.use(express.bodyParser());
 
 
+var mongoose = require('mongoose');
+mongoose.connect("mongodb://localhost/TaskManager",function() {
+  console.log("Connected")
+});
+
+
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
   console.log("Listening on " + port);
