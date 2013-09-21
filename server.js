@@ -19,6 +19,12 @@ var Schema = mongoose.Schema;
   });
 var ModelObject = mongoose.model('ModelObject', ModelSchema);
 
+var newModelObject = new ModelObject({
+    name:"I am mongo Object",
+    description:"I am going to be persisted"
+}).save(function() {
+  console.log("Hurray I got persisted")
+});
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
@@ -37,7 +43,7 @@ app.get("/participant/:id",function(request,response) {
 });
 
 app.post("/participant",function(request,response) {
-  //Create new Friend
+  //Create new Object
   response.end("I am creating new participant");
 });
 
