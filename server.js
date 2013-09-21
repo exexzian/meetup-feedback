@@ -39,7 +39,11 @@ app.get("/participants",function(request,response) {
 
 app.get("/participant/:id",function(request,response) {
   //Show friend by id 
-  response.end("I am sending details of particiapant with id "+ request.params.id);
+  ModelObject.findById(request.params.id,function(err,object) {
+      console.log("I am sending details of particiapant with id "+ request.params.id);
+      response.send(JSON.stringify(object));
+  });
+  
 });
 
 app.post("/participant",function(request,response) {
